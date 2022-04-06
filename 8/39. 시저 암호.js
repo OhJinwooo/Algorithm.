@@ -37,3 +37,36 @@ function solution(s, n) {
         return String.fromCharCode(code)
     }).join("")
 }
+
+//다른답안 코드
+function solution(s, n) {
+    let answer = '';
+    // 입력받은 s를 하나씩 탐색
+    for (let i = 0; i < s.length; i++) {
+      // s의 각 문자를 아스키코드로 변환
+      let sASCII = s.charCodeAt(i);
+      console.log(sASCII)
+      // 대문자의 경우 65 ~ 90의 범위
+      if (sASCII >= 65 && sASCII <= 90) {
+        // n만큼 이동시키기
+        sASCII += n;
+        // 이동 후, 90을 초과하면 처음으로 돌아가서 미는 것이므로 -26
+        if (sASCII > 90) {
+          sASCII -= 26;
+        }
+      }
+      // 소문자의 경우 97 ~ 122의 범위
+      if (sASCII >= 97 && sASCII <= 122) {
+        // n만큼 이동시키기
+        sASCII += n;
+        // 이동 후, 122을 초과하면 처음으로 돌아가서 미는 것이므로 -26
+        if (sASCII > 122) {
+          sASCII -= 26;
+        }
+      }
+      // sASCII를 문자열로 변환 후 answer에 누적
+      sString = String.fromCharCode(sASCII);
+      answer += sString;
+    }
+    return answer;
+  }
